@@ -1,0 +1,302 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Poppins';
+
+    scroll-behavior: smooth;
+}
+
+:root
+{
+    --color-0:#1E272E;
+    --color-1:#182025;
+    --color-2:#FFF;
+    --color-3:#E2E2E2;
+    --color-4:#FEC207;
+    --color-5:#FFD964;
+
+    --font-h1:clamp(50px,5vw,100px);
+    --font-h2:clamp(25px,4vw,50px);
+    --font-h3:clamp(10px,3vw,25px);
+    --font-p:clamp(5px,2vw,10px);
+}
+
+body
+{
+    background-color: var(--color-0);
+}
+
+/**===GENERAL STYLES===**/
+.Center
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Text-Colored
+{
+    color:var(--color-4)
+}
+
+/**===NAV BAR STYLES===**/
+
+.NavBar
+{
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background-color: var(--color-2);
+    border-bottom: 3px solid var(--color-4);
+
+    justify-content: space-between;
+
+    z-index: 100;
+}
+
+/**===NAV BAR BUTTON LIST STYLES===**/
+
+.NavBar-Button
+{
+    height:60px;
+    list-style: none;
+}
+
+.NavBar-Button a
+{
+    padding: 0px 15px;
+
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    color:var(--color-0);
+}
+
+/**===NAV BAR LOGO STYLES===**/
+
+#NavBar-Logo > img
+{
+    width: 30px;
+    height: auto;
+    margin-left: 25px;
+    margin-right: 10px;
+}
+
+#NavBar-Logo > p
+{
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-right: 25px;
+
+    pointer-events: none;
+}
+
+#NavBar-Social img
+{
+    width: 25px;
+    height: auto;
+    margin:0px 5px;
+
+    cursor: pointer;
+}
+
+/**===PAGE LIST STYLES===**/
+
+.PageList
+{
+    position: fixed;
+    width: 100%;
+
+    bottom: 1%;
+}
+
+.PageList > ul
+{
+    list-style: none;
+}
+
+.PageList > ul li
+{
+    margin: 5px;
+    height: auto;
+}
+
+.PageList > ul li img
+{
+    width: 100%;
+    height: auto;
+}
+
+.PageList-UnSelected
+{
+    width: 25px;
+}
+
+.PageList-UnSelected img
+{
+    opacity: 0.6;
+}
+
+.PageList-Selected
+{
+    width: 40px;
+}
+
+.PageList-Selected img
+{
+    opacity: 1;
+}
+
+/**===SECTIONS STYLES===**/
+
+.Section
+{
+    width: 100%;
+    height: fit-content;
+    min-height: 100vh;
+
+    overflow: hidden;
+}
+
+/**===SECTION HOME STYLES===**/
+
+#Home
+{
+    justify-content: space-between;
+}
+
+#Home-Titles
+{
+    width: 60%;
+    height: 100%;
+    flex-direction: column;
+
+    padding-left: 8%;
+}
+
+#Home-Title-Content
+{
+    width: 100%;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+}
+
+#Home-Title-Content > h1
+{
+    color: var(--color-2);
+    font-size: var(--font-h1);
+    line-height: 1em;
+
+    text-transform: uppercase;
+}
+
+#Home-SubTitle-Content
+{
+    justify-content: flex-start;
+}
+
+#Home-SubTitle-Content > h3
+{
+    width: 80%;
+    font-size: var(--font-h3);
+    font-weight: 400;
+    color: var(--color-3);
+}
+
+#Home-Gallery
+{
+    position: relative;
+
+    width: 40%;
+    min-height: 100vh;
+}
+
+#Home-Gallery a
+{
+    position: absolute;
+
+    width: 60%;
+    height: 60%;
+}
+
+#Home-Gallery img
+{
+    position: absolute;
+    width: 60%;
+    height: auto;
+}
+
+.Home-Gallery-Back
+{
+    transform: translate(-15%,15%);
+
+    filter: brightness(30%);
+    box-shadow: 0px 0px 50px var(--color-1);
+}
+
+/**===SECTION KNOWME STYLES===**/
+
+/**===SECTION EXPERIENCE STYLES===**/
+
+/**===SECTION WORKS STYLES===**/
+
+/**===SECTION CONTACT STYLES===**/
+
+/**===SECTION FOOTER STYLES===**/
+
+/**RESPONSIVE MEDIA QUERY**/
+
+@media screen and (max-width: 1000px) 
+{
+/**RESPONSIVE NAVBAR**/
+
+    #NavBar-Social 
+    {
+      display: none;
+    }
+    #NavBar-Button-List 
+    {
+      display: none;
+    }
+
+/**RESPONSIVE SECTION HOME**/
+
+    #Home
+    {
+        padding-top: 120px;
+        flex-direction: column;
+    }
+
+    #Home-Titles
+    {
+        width: 100%;
+        height: fit-content;
+        text-align: center;
+
+        padding-left: 0;
+
+        margin: 2%;
+    }
+
+    #Home-Title-Content
+    {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #Home-SubTitle-Content
+    {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #Home-Gallery
+    {
+        width: 100%;
+        height: 100vh;
+    }
+}
