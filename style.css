@@ -18,6 +18,7 @@
     --color-4:#FEC207;
     --color-5:#FFD964;
     --color-6:#e74c3c;
+    --color-7:#0A0A0A;
 
     --font-h1:clamp(40px,5vw,80px);
     --font-h2:clamp(25px,4vw,50px);
@@ -52,6 +53,127 @@ body
     color:var(--color-6);
 }
 
+/**===COTA STYLES===**/
+
+.Cota-Content
+{
+    pointer-events: none;
+
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+.Cota
+{
+    display: flex;
+    width: 0%;
+    opacity: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Cota-Edge
+{
+    display: flex;
+    align-items: center;
+}
+
+.Cota-Edge img
+{
+    width: 15px;
+    height: auto;
+}
+
+.Cota-Edge-Invert
+{
+    transform: scaleX(-1);
+}
+
+.Cota-Bar
+{
+    height: 3px;
+    width: 100%;
+    background-color: white;
+}
+
+.Cota-Text
+{
+    text-transform: uppercase;
+    font-weight: 500;
+
+    color: white;
+
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+/**===COTA NAVBAR===**/
+
+.Cota-NavBar
+{
+    transform: translate(0%,150%);
+}
+
+.Cota-NavBar .Cota-Edge img
+{
+    width: 10px;
+    height: auto;
+}
+
+.Cota-NavBar .Cota-Text
+{
+    font-size: var(--font-p);
+    font-weight: 400;
+}
+
+/**===COTA TITLES===**/
+
+.Cota-Titles .Cota
+{
+    width: 100%;
+    opacity: 1;
+}
+
+.Cota-Titles .Cota-Text
+{
+    opacity: 1;
+    transform: translateY(0%);
+    font-size: var(--font-h3);
+}
+
+/**===COTA FORM===**/
+
+.Cota-Form .Cota
+{
+    width: 95%;
+    opacity: 1;
+
+    margin-bottom: 30px;
+}
+
+.Cota-Form .Cota-Text
+{
+    opacity: 1;
+    transform: translateY(50%);
+    font-size: var(--font-h4);
+}
+
+.Cota-Form .Cota-Bar
+{
+    background-color: var(--color-1);
+}
+
+.Cota-Form .Cota-Edge
+{
+    filter: brightness(0%);
+}
+
 /**===NAV BAR STYLES===**/
 
 .NavBar
@@ -71,13 +193,15 @@ body
 
 .NavBar-Button
 {
+    position: relative;
+
     height:60px;
     list-style: none;
 }
 
 .NavBar-Button a
 {
-    padding: 0px 15px;
+    padding: 0px 25px;
 
     height: 100%;
     width: 100%;
@@ -98,16 +222,19 @@ body
     margin-right: 10px;
 }
 
-#NavBar-Logo > p
+#NavBar-Logo-Title
 {
     font-weight: 500;
     text-transform: uppercase;
     margin-right: 25px;
 
     pointer-events: none;
+
+    transform: translateX(-150%);
+    opacity: 0;
 }
 
-#NavBar-Social img
+.Social-Button
 {
     width: 25px;
     height: auto;
@@ -136,7 +263,7 @@ body
 
 #Home-Titles
 {
-    width: 60%;
+    width: 50%;
     height: 100%;
     flex-direction: column;
 
@@ -152,6 +279,8 @@ body
 
 #Home-Title-Content > h1
 {
+    position: relative;
+
     color: var(--color-2);
     font-size: var(--font-h1);
     line-height: 0.5em;
@@ -167,7 +296,7 @@ body
 #Home-SubTitle-Content > h3
 {
     width: 80%;
-    font-size: var(--font-h3);
+    font-size: var(--font-h4);
     font-weight: 300;
     color: var(--color-3);
 }
@@ -175,31 +304,21 @@ body
 #Home-Gallery
 {
     position: relative;
-
-    width: 40%;
+    width: 50%;
 }
 
-#Home-Gallery a
+#Home-Gallery > .Home-Gallery-Img
 {
-    position: absolute;
-
-    width: 60%;
-    height: 60%;
+    box-shadow: 0px 0px 50px var(--color-1);
 }
 
-#Home-Gallery img
+.Home-Gallery-Img
 {
     position: absolute;
     width: 60%;
     height: auto;
-}
 
-.Home-Gallery-Back
-{
-    transform: translate(-15%,15%);     
-
-    filter: brightness(30%);
-    box-shadow: 0px 0px 50px var(--color-1);
+    opacity: 1;
 }
 
 /**===SECTION KNOWME STYLES===**/
@@ -213,20 +332,20 @@ body
 {
     position: relative;
 
-    width: 40%;
+    width: 30%;
     height: 100%;
     padding-left: 8%;
 }
 
 #KnowMe-Profile > img
 {
-    width: 80%;
+    width: 100%;
     height: auto;
 }
 
 #KnowMe-Info
 {
-    width: 60%;
+    width: 70%;
     height: 100%;
 
     padding: 0 8%;
@@ -234,6 +353,8 @@ body
 
 #KnowMe-Title > h1
 {
+    position: relative;
+
     font-size: var(--font-h1);
     text-transform: uppercase;
     color: var(--color-2);
@@ -246,8 +367,16 @@ body
 #KnowMe-SubTitle > h3
 {
     color: var(--color-3);
-    font-size: var(--font-h3);
+    font-size: var(--font-h4);
     font-weight: 300;
+}
+
+#KnowMe-Aptitudes
+{
+    margin: 2rem 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--color-4);
 }
 
 /**===SECTION EXPERIENCE STYLES===**/
@@ -260,14 +389,15 @@ body
 
 #Experience-Title
 {
-    width: 100%;
-    height: 10vh;
-
-    padding-bottom: 20px;
+    height: 10%;
 }
 
 #Experience-Title > h1
 {
+    position: relative;
+
+    padding-top: 80px;
+
     text-align: center;
     font-size: var(--font-h1);
 
@@ -278,7 +408,7 @@ body
 #Experience-TemporalLine
 {
     width: 100%;
-    height: 50vh;
+    height: 40%;
 
     background-color: var(--color-4);
 
@@ -289,13 +419,17 @@ body
 {
     padding-top: 20px;
 
-    width: 60%;
-    height: 35vh;
+    width:60%;
+    height: 50%;
+
+    margin-bottom: 5%;
 }
 
 #Experience-Info > h3
 {
-    font-size: var(--font-h3);
+    position: relative;
+
+    font-size: var(--font-h4);
     color: var(--color-3);
     font-weight: 300;
 }
@@ -309,6 +443,8 @@ body
 
 #Works-Gallery
 {
+    margin-top: 100px;
+
     width: 100%;
     height: 80vh;
 
@@ -379,7 +515,7 @@ body
     justify-content: space-between;
 
     z-index: 1;
-    height: 95%;
+    height: 93%;
     width: 100%;
 }
 
@@ -415,12 +551,12 @@ body
 
     z-index: 1;
     width: 100%;
-    height: 5%;
+    height: 7%;
 }
 
 .Works-Gallery-Item-Footer p
 {
-    font-size: var(--font-h4);
+    font-size: var(--font-p);
     font-weight: 600;
     text-transform: uppercase;
 
@@ -440,15 +576,13 @@ body
 .Contact-Content
 {
     width: 100%;
-    height: 90vh;
-
     justify-content: space-between;
 }
 
 .Contact-Map
 {
     width: 50%;
-    height: 70vh;
+    height: 80vh;
 
     border: none;
     box-shadow: 0px 0px 50px var(--color-1);
@@ -461,15 +595,25 @@ body
     z-index: 1;
 
     width: 50%;
-    height: 80vh;
+    height: fit-content;
+    padding: 5% 0%;
     padding-left: 8%;
     padding-right: 2%;
 
     flex-direction: column;
 }
 
+#Contact-Form > h1
+{
+    width: 100%;
+    color: var(--color-2);
+    font-size: var(--font-h2);
+}
+
 .Contact-Input
 {
+    position:relative;
+
     flex-direction: column;
 
     width: 100%;
@@ -478,7 +622,9 @@ body
 
     padding: 2.25%;
 
-    margin:2.5% 0%;
+    margin:1% 0%;
+
+    padding-top: 80px;
 }
 
 .Contact-Input h3
@@ -500,19 +646,44 @@ body
     font-size: var(--font-p);
 }
 
+.Contact-Last-Input
+{
+    margin-bottom: 0;
+}
+
+.Contact-Last-Input .Cota
+{
+    padding-bottom: 85px;
+}
+
 #Contact-Form-Submit
 {
-    width: 250px;
-    height: 50px;
+    width: 100%;
+    height: 40px;
 
     border: none;
     background-color: var(--color-4);
 
     color:var(--color-1);
 
-    font-size: var(--font-h4);
+    font-size: var(--font-p);
     font-weight: 700;
     text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+input, textarea
+{
+    width: 100%;
+    border-radius: 0%;
+    border: 1px solid #BBB;
+    padding: 0.5rem;   
+}
+
+textarea
+{
+    resize: none;
 }
 
 /**===SECTION FOOTER STYLES===**/
@@ -520,7 +691,7 @@ body
 .Footer
 {
    width: 100%;
-   height: 6vh;
+   height: 50px;
    
    background-color: var(--color-2);
    border-top: 5px solid var(--color-4);
@@ -597,6 +768,11 @@ body
         padding-bottom: 25%;
     }
 
+    #Home-Gallery img 
+    {
+        width: 85%;
+    }
+
 /**RESPONSIVE SECTION KNOWME**/
 
     #KnowMe
@@ -608,10 +784,10 @@ body
     #KnowMe-Profile
     {
         padding:0;
-        width: 100%;
-        height: 50vh;
+        width: 80%;
+        height: auto;
 
-        padding-bottom: 20%;
+        padding-bottom: 30%;
     }
 
     #KnowMe-Info
@@ -644,6 +820,13 @@ body
         margin: 0% 5%;
     }
 
+/**RESPONSIVE SECTION WORKS**/
+
+    #Works-Gallery
+    {
+        height: 60vh;
+    }
+
 /**RESPONSIVE SECTION CONTACT**/
 
     #Contact
@@ -667,10 +850,10 @@ body
         margin: 0;
     }
 
-    #Contact-Form-Submit
+    #Contact-Form > h1
     {
-        width: 100%;
-        margin-top: 3%;
+        text-align: center;
+        margin-bottom: 20px;
     }
 
     .Contact-Map
