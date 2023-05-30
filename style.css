@@ -132,21 +132,6 @@ body
     font-weight: 400;
 }
 
-/**===COTA TITLES===**/
-
-.Cota-Titles .Cota
-{
-    width: 100%;
-    opacity: 1;
-}
-
-.Cota-Titles .Cota-Text
-{
-    opacity: 1;
-    transform: translateY(0%);
-    font-size: var(--font-h3);
-}
-
 /**===COTA FORM===**/
 
 .Cota-Form .Cota
@@ -256,31 +241,19 @@ body
 
 /**===SECTION HOME STYLES===**/
 
-#Home
-{
-    justify-content: space-between;
-}
-
 #Home-Titles
-{
-    width: 50%;
-    height: 100%;
-    flex-direction: column;
-
-    padding-left: 8%;
-}
-
-#Home-Title-Content
-{
-    width: 100%;
-    justify-content: flex-start;
-    padding-bottom: 20px;
-}
-
-#Home-Title-Content > h1
 {
     position: relative;
 
+    min-width: 500px;
+    max-width: 1000px;
+    width: 45%;
+    height: 100%;
+    flex-direction: column;
+}
+
+#Home-Titles > h1
+{
     color: var(--color-2);
     font-size: var(--font-h1);
     line-height: 0.5em;
@@ -288,14 +261,9 @@ body
     text-transform: uppercase;
 }
 
-#Home-SubTitle-Content
+#Home-Titles > h3
 {
-    justify-content: flex-start;
-}
-
-#Home-SubTitle-Content > h3
-{
-    width: 80%;
+    width: 100%;
     font-size: var(--font-h4);
     font-weight: 300;
     color: var(--color-3);
@@ -303,68 +271,102 @@ body
 
 #Home-Gallery
 {
-    position: relative;
-    width: 50%;
+    width: 45%;
+    min-width: 500px;
+    max-width: 1000px;
+    height: 100%;
 }
 
-#Home-Gallery > .Home-Gallery-Img
+#Home-GalleryContent
 {
+    overflow: hidden;
+
+    position: relative;
+
+    width: 500px;
+    height: 500px;
+
     box-shadow: 0px 0px 50px var(--color-1);
+    transition: 0.1s ease-in-out;
+}
+
+#Home-GalleryContent:hover
+{
+    transform: scale(1.025);
 }
 
 .Home-Gallery-Img
 {
     position: absolute;
-    width: 60%;
+    width: 100%;
     height: auto;
 
     opacity: 1;
 }
 
-/**===SECTION KNOWME STYLES===**/
-
-#KnowMe
+#Home-Img-1, #Home-Img-2
 {
-    justify-content: space-between;
+    transform:translateX(100%);
 }
+
+.Cota-Titles
+{
+    top: 0%;
+}
+
+.Cota-Titles .Cota
+{
+    width: 100%;
+    opacity: 1;
+}
+
+.Cota-Titles .Cota-Text
+{
+    opacity: 1;
+    transform: translateY(0%);
+    font-size: var(--font-h3);
+}
+
+/**===SECTION KNOWME STYLES===**/
 
 #KnowMe-Profile
 {
     position: relative;
 
-    width: 30%;
+    min-width: 500px;
+    max-width: 1000px;
+    width: 45%;
     height: 100%;
-    padding-left: 8%;
 }
 
 #KnowMe-Profile > img
 {
-    width: 100%;
+    width: 60%;
     height: auto;
 }
 
 #KnowMe-Info
 {
-    width: 70%;
-    height: 100%;
-
-    padding: 0 8%;
-}
-
-#KnowMe-Title > h1
-{
     position: relative;
 
+    min-width: 500px;
+    max-width: 1000px;
+    width: 45%;
+    height: 100%;
+
+    flex-direction: column;
+}
+
+#KnowMe-Info > h1
+{
     font-size: var(--font-h1);
     text-transform: uppercase;
     color: var(--color-2);
 
     line-height: 0.5em;
-
-    padding-bottom: 20px;
 }
 
-#KnowMe-SubTitle > h3
+#KnowMe-Info > h3
 {
     color: var(--color-3);
     font-size: var(--font-h4);
@@ -373,11 +375,82 @@ body
 
 #KnowMe-Aptitudes
 {
-    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+
+    padding-top: 30px;
     width: 100%;
-    height: 60px;
-    background-color: var(--color-4);
+    white-space: nowrap;
 }
+
+#KnowMe-Aptitudes::before,
+#KnowMe-Aptitudes::after
+{
+    background: linear-gradient(to right, var(--color-0) 0%, #1E272E00 100%);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+#KnowMe-Aptitudes::before
+{
+    left: 0;
+    top: 0;
+}
+
+#KnowMe-Aptitudes::after
+{
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+#KnowMe-Aptitudes:hover .KnowMe-Slider 
+{
+    animation-play-state: paused;
+}
+
+.KnowMe-Slider
+{
+    height: 100%;
+    display: inline-flex;
+    animation: 10s scroll infinite linear;
+}
+
+.KnowMe-Slider-Item
+{
+    cursor: default;
+
+    height: 100%;
+
+    width: 150px;
+    height: 60px;
+
+    background-color: var(--color-3);
+    border-bottom: 5px solid var(--color-4);
+
+    margin: 0px 10px;
+
+    color:var(--color-1);
+    font-weight: 700;
+    font-size: var(--font-h4);
+}
+
+@keyframes scroll 
+{
+    from
+    {
+        transform: translateX(0);
+    }
+    to
+
+    {
+        transform: translateX(-100%);
+    }
+}
+
 
 /**===SECTION EXPERIENCE STYLES===**/
 
@@ -567,40 +640,28 @@ body
 
 /**===SECTION CONTACT STYLES===**/
 
-#Contact
+#Contact-Map
 {
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.Contact-Content
-{
-    width: 100%;
-    justify-content: space-between;
-}
-
-.Contact-Map
-{
-    width: 50%;
+    min-width: 500px;
+    max-width: 1000px;
+    width: 45%;
     height: 80vh;
 
     border: none;
     box-shadow: 0px 0px 50px var(--color-1);
 
-    padding-right: 8%;
+    padding-left: 60px;
 }
 
 #Contact-Form
 {
-    z-index: 1;
-
-    width: 50%;
-    height: fit-content;
-    padding: 5% 0%;
-    padding-left: 8%;
-    padding-right: 2%;
+    min-width: 500px;
+    max-width: 1000px;
+    width: 45%;
 
     flex-direction: column;
+
+    padding: 60px 0;
 }
 
 #Contact-Form > h1
@@ -707,6 +768,54 @@ textarea
 
 /**RESPONSIVE MEDIA QUERY**/
 
+@media screen and (min-width: 2000px) 
+{
+
+/**RESPONSIVE SECTION HOME**/
+
+    #Home-GalleryContent
+    {
+        width: 600px;
+        height: 600px;
+    }
+
+    #Home-Titles
+    {
+        width: 33%;
+    }
+
+    #Home-Gallery
+    {
+        width: 33%;
+    }
+
+/**RESPONSIVE SECTION KNOWME**/
+
+    #KnowMe-Profile
+    {
+        width: 33%;
+    }
+
+    #KnowMe-Info
+    {
+        width: 33%;
+    }
+
+/**RESPONSIVE SECTION CONTACT**/
+
+    #Contact-Form
+    {
+        width: 33%;
+    }
+
+    #Contact-Map
+    {
+        width: 33%;
+        height: 50vh;
+    }
+
+}
+
 @media screen and (max-width: 1000px) 
 {
 /**RESPONSIVE NAVBAR**/
@@ -728,63 +837,56 @@ textarea
         flex-direction: column;
     }
 
+    .Cota-Titles
+    {
+        width: 90%;
+    }
+
     #Home-Titles
     {
+        min-width: fit-content;
         width: 100%;
-        height: 50vh;
+        height: 50%;
 
-        padding: 0;
+        justify-content: center;
+        padding-bottom: 60px;
     }
 
-    #Home-Title-Content
+    #Home-Titles > h1
     {
-        width: 100%;
-        justify-content: center;
         text-align: center;
+        width: 90%;
     }
 
-    #Home-Title-Content > h1
+    #Home-Titles > h3
     {
-        margin: 0% 8%;
-    }
-
-    #Home-SubTitle-Content
-    {
-        width: 100%;
-        justify-content: center;
-    }
-
-    #Home-SubTitle-Content > h3
-    {
-        width: 100%;
-        margin: 0% 8%;
+        width: 90%;
     }
 
     #Home-Gallery
     {
         width: 100%;
-        height: 50vh;
-
-        padding-bottom: 25%;
+        height: 50%;
     }
 
-    #Home-Gallery img 
+    #Home-GalleryContent
     {
-        width: 85%;
+        width: 300px;
+        height: 300px;
     }
 
 /**RESPONSIVE SECTION KNOWME**/
 
     #KnowMe
     {
-        justify-content: center;
+        padding-top: 60px;
         flex-direction: column;
     }
 
     #KnowMe-Profile
     {
         padding:0;
-        width: 80%;
+        width: 90%;
         height: auto;
 
         padding-bottom: 30%;
@@ -793,19 +895,18 @@ textarea
     #KnowMe-Info
     {
         width: 100%;
-        height: fit-content;
-
-        padding:0; 
+        height: 50%;
     }
 
-    #KnowMe-Titles-Content
-    {  
-        margin: 0% 5%;
-    }
-
-    #KnowMe-Title
+    #KnowMe-Info > h1
     {
         text-align: center;
+        width: 90%;
+    }
+
+    #KnowMe-Info > h3
+    {
+        width: 70%;
     }
 
 /**RESPONSIVE SECTION EXPERIENCE**/
@@ -831,20 +932,16 @@ textarea
 
     #Contact
     {
-        min-height: 100vh;
-        height: fit-content;
-    }
-
-    .Contact-Content
-    {
         padding-top: 60px;
-
+    
         justify-content: center;
         flex-direction: column;
     }
 
     #Contact-Form
     {
+        z-index: 1;
+        min-width: fit-content;
         width: 90%;
         padding: 0;
         margin: 0;
@@ -856,8 +953,9 @@ textarea
         margin-bottom: 20px;
     }
 
-    .Contact-Map
+    #Contact-Map
     {
+        min-width: fit-content;
         width: 100%;
         padding: 5%;
         margin: 0;
