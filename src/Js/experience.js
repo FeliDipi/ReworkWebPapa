@@ -76,7 +76,7 @@ const NextItem = (percent,index) =>
     });
 }
 
-const TemporalAnimation = () =>
+const Experience = () =>
 {
     percentIncrement/=2;
     gsap.set(tracks,{x:`${percentIncrement}%`});
@@ -84,4 +84,4 @@ const TemporalAnimation = () =>
     NextItem(percentIncrement,$expTrack.children.length-1);
 }
 
-export default TemporalAnimation;
+export default Experience;

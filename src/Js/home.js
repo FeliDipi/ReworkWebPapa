@@ -1,4 +1,4 @@
-const HomeAnimation = ()=>
+const Home = ()=>
 {
     //Home Gallery
     const $homeImg1 = document.querySelector("#Home-Img-1");
@@ -18,4 +18,4 @@ const HomeAnimation = ()=>
     });
 }
 
-export default HomeAnimation;
+export default Home;

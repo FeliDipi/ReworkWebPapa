@@ -21,7 +21,7 @@
     --color-7:#0A0A0A;
 
     --font-h1:clamp(40px,5vw,70px);
-    --font-h2:clamp(25px,4vw,50px);
+    --font-h2:clamp(25px,4vw,30px);
     --font-h3:clamp(15px,3vw,22px);
     --font-h4:clamp(15px,3vw,20px);
     --font-p:clamp(10px,3vw,15px);
@@ -223,6 +223,7 @@ body
 
 #Home-Titles > h1
 {
+    width: 100%;
     color: var(--color-2);
     font-size: var(--font-h1);
     line-height: 0.5em;
@@ -257,7 +258,7 @@ body
     height: 450px;
 
     box-shadow: 0px 0px 50px var(--color-1);
-    transition: 0.1s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 #Home-GalleryContent:hover
@@ -330,6 +331,7 @@ body
 
 #KnowMe-Info > h1
 {
+    width: 100%;
     font-size: var(--font-h1);
     text-transform: uppercase;
     color: var(--color-2);
@@ -339,6 +341,7 @@ body
 
 #KnowMe-Info > h3
 {
+    width: 100%;
     color: var(--color-3);
     font-size: var(--font-h4);
     font-weight: 300;
@@ -394,19 +397,24 @@ body
 {
     cursor: default;
 
-    height: 100%;
-
     width: 150px;
     height: 60px;
 
-    background-color: var(--color-3);
-    border-bottom: 5px solid var(--color-4);
+    background-color: var(--color-4);
 
-    margin: 0px 10px;
+    margin: 10px;
 
     color:var(--color-1);
     font-weight: 700;
     font-size: var(--font-h4);
+
+    transition: all 0.2s ease-in-out;
+}
+
+.KnowMe-Slider-Item:hover
+{
+    background-color: var(--color-3);
+    transform: scale(0.975);
 }
 
 @keyframes scroll 
@@ -519,7 +527,7 @@ body
 
     font-family: "Poppins";
     color: var(--color-0);
-    font-size: 30px;
+    font-size: var(--font-h2);
     font-weight: 700;
 
     text-align: center;
@@ -553,50 +561,76 @@ body
     flex-direction: column;
 }
 
-#Works-Gallery
+.swiper 
 {
-    margin-top: 100px;
-
+    max-width: 80%;
     width: 100%;
-    height: 80vh;
+    height: 100%;
 
-    margin-bottom: 2%;
+    margin-bottom: 60px;
 }
 
-#Works-Companies
+.Works-Gallery-Next, .Works-Gallery-Prev
 {
-    width: 100%;
-    height: 20vh;
+    color:var(--color-3);
+    transition: all 0.2s ease-in-out;
+}
+
+.Works-Gallery-Next:hover,.Works-Gallery-Prev:hover
+{
+    transform: scale(0.9);
+}
+
+.Works-Gallery-Next
+{
+    right: 0%;
+}
+
+.Works-Gallery-Prev
+{
+    left: 0%;
+}
+
+.swiper-pagination-bullet
+{
+    opacity: 1;
+    background-color: var(--color-3);
+}
+
+.swiper-pagination-bullet-active
+{
     background-color: var(--color-4);
 }
 
-.Works-Gallery-Item-Content
+.Works-Gallery-Content
 {
+    overflow-x: hidden;
+}
+
+.Works-Gallery
+{
+    margin-bottom: 40px;
+}
+
+.Works-Gallery-Card
+{
+    cursor: pointer;
     flex-direction: column;
 
     position: relative;
     overflow: hidden;
 
-    width: 90%;
-    max-width: 450px;
-    height: 95%;
-    margin: 0 15px;
+    height: 80vh;
 
-    box-shadow: 0px 0px 50px var(--color-1);
+    transition: all 0.2s ease-in-out;
 }
 
-.Works-Gallery-Item 
+.Works-Gallery-Card:hover
 {
-    flex-direction: column;
-
-    position: relative;
-    overflow: hidden;
-
-    width: 100%;
-    height: 100%;
+    transform: scale(0.975);
 }
 
-.Works-Gallery-Item-Content > img
+.Works-Gallery-Card > img
 {
     position: absolute;
 
@@ -608,16 +642,18 @@ body
 
 .Works-Gallery-Item-Gradient
 {
+    opacity: 0;
     position: absolute;
     width: 100%;
     height: 100%;
 
     background: linear-gradient(0deg, #1E272E 0%, rgba(30, 39, 46, 0.8) 25%, rgba(30, 39, 46, 0) 100%);
+    transition: all 0.2s ease-in-out;
 }
 
-.Works-Gallery-Item-Hidden
+.Works-Gallery-Card:hover > .Works-Gallery-Item-Gradient
 {
-    opacity: 0;
+    opacity: 1;
 }
 
 .Works-Gallery-Item-Info
@@ -675,6 +711,75 @@ body
     color: var(--color-1);
 
     margin: 0% 5%;
+}
+
+#Works-Companies
+{
+    width: 100%;
+    height: 20vh;
+    background-color: var(--color-1);
+
+    position: relative;
+    overflow: hidden;
+
+    white-space: nowrap;
+}
+
+#Works-Companies::before,
+#Works-Companies::after
+{
+    background: linear-gradient(to right, var(--color-0) 0%, #1E272E00 100%);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+#Works-Companies::before
+{
+    left: 0;
+    top: 0;
+}
+
+#Works-Companies::after
+{
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+#Works-Companies:hover .KnowMe-Slider 
+{
+    animation-play-state: paused;
+}
+
+.Works-Slider
+{
+    height: 100%;
+    display: inline-flex;
+    animation: 10s scroll infinite linear;
+}
+
+.Works-Slider-Item
+{
+    width: auto;
+    height: 60px;
+
+    margin: 0 20px;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.Works-Slider-Item > img
+{
+    width: auto;
+    height: 100%;
+}
+
+.Works-Slider-Item:hover
+{
+    transform: scale(0.975);
 }
 
 /**===SECTION CONTACT STYLES===**/
@@ -748,6 +853,7 @@ body
 .Contact-Last-Input
 {
     margin-bottom: 0;
+    border-bottom: none;
 }
 
 .Contact-Last-Input .Cota-Form
@@ -770,6 +876,13 @@ body
     text-transform: uppercase;
 
     cursor: pointer;
+
+    transition: 0.25s ease-in-out;
+}
+
+#Contact-Form-Submit:hover
+{
+    background-color: var(--color-3);
 }
 
 input, textarea
@@ -834,6 +947,11 @@ textarea
 @media screen and (min-width: 2000px) 
 {
 
+    .Cota-Text
+    {
+        font-size: var(--font-h2);
+    }
+
 /**RESPONSIVE SECTION HOME**/
 
     #Home-GalleryContent
@@ -845,6 +963,11 @@ textarea
     #Home-Titles
     {
         width: 33%;
+    }
+
+    #Home-Titles > h3
+    {
+        font-size: var(--font-h2);
     }
 
     #Home-Gallery
@@ -859,9 +982,56 @@ textarea
         width: 33%;
     }
 
+    #KnowMe-Profile > img
+    {
+        width: 70%;
+        height: auto;
+    }
+
     #KnowMe-Info
     {
         width: 33%;
+    }
+
+    #KnowMe-Info > h3
+    {
+        font-size: var(--font-h2);
+    }
+
+    #Experience-TemporalLine
+    {
+        height: 350px;
+        margin: 100px 0px;
+    }
+
+/**RESPONSIVE SECTION EXPERIENCE**/
+
+    .Experience-Item
+    {
+        width: 400px;
+        height: 200px;
+    }
+
+    .Experience-Item>h3
+    {
+        font-size: var(--font-h1);
+    }
+
+    #Experience-Info>h3
+    {
+        font-size: var(--font-h2);
+    }
+
+/**RESPONSIVE SECTION WORKS**/
+
+    .Works-Gallery-Item-Info > h3
+    {
+        font-size: var(--font-h2);
+    }
+
+    .Works-Gallery-Item-Footer p
+    {
+        font-size: var(--font-h2);
     }
 
 /**RESPONSIVE SECTION CONTACT**/
@@ -995,13 +1165,6 @@ textarea
     #Experience-Info
     {
         width: 90%;
-    }
-
-/**RESPONSIVE SECTION WORKS**/
-
-    #Works-Gallery
-    {
-        height: 60vh;
     }
 
 /**RESPONSIVE SECTION CONTACT**/
