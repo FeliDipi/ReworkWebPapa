@@ -9,29 +9,77 @@ const NavBarAnimations = ()=>
         x:"0%",
         opacity:1,
         ease:"Power3.InOut"
-    }); 
+    });
 
-    //Social Buttons
-    const $socialBtns = document.querySelectorAll(".Social-Button");
+    const $mobileMenuBtn = document.querySelector("#NavBar-Button-Menu");
+    const $lineTop = document.querySelector(".LineTop");
+    const $lineMid = document.querySelector(".LineMid");
+    const $lineBottom = document.querySelector(".LineBottom");
 
-    $socialBtns.forEach(btn=>
+    const $mobileMenu = document.querySelector(".Mobile-Menu");
+
+    let d = 0.2;
+    let menuOpen = false;
+
+    $mobileMenuBtn.addEventListener("click",()=>
+    {
+        if(!menuOpen)
         {
-            btn.addEventListener("mouseover",()=>{
-                gsap.to(btn,{
-                    duration:0.25,
-                    scale:1.2,
-                    ease:"Power3.InOut"
-                });
+            menuOpen=true;
+            gsap.to($mobileMenu,{
+                duration:d,
+                ease:"Power3.InOut",
+                left:"0%",
             });
-
-            btn.addEventListener("mouseout",()=>{
-                gsap.to(btn,{
-                    duration:0.25,
-                    scale:1,
-                    ease:"Power3.InOut"
-                });
+            gsap.to($lineTop,{
+                duration:d,
+                ease:"Power3.InOut",
+                top:"30px",
+                rotateZ:"45deg",
+                backgroundColor:"#FEC207"
             });
-        });
+            gsap.to($lineMid,{
+                duration:d,
+                ease:"Power3.InOut",
+                opacity:0
+            });
+            gsap.to($lineBottom,{
+                duration:d,
+                ease:"Power3.InOut",
+                top:"30px",
+                rotateZ:"-45deg",
+                backgroundColor:"#FEC207"
+            });
+        }
+        else
+        {
+            menuOpen=false;
+            gsap.to($mobileMenu,{
+                duration:d,
+                ease:"Power3.InOut",
+                left:"100%",
+            });
+            gsap.to($lineTop,{
+                duration:d,
+                ease:"Power3.InOut",
+                top:"15px",
+                rotateZ:"0deg",
+                backgroundColor:"#1E272E"
+            });
+            gsap.to($lineMid,{
+                duration:d,
+                ease:"Power3.InOut",
+                opacity:1
+            });
+            gsap.to($lineBottom,{
+                duration:d,
+                ease:"Power3.InOut",
+                top:"45px",
+                rotateZ:"0deg",
+                backgroundColor:"#1E272E"
+            });
+        }
+    })
 }
 
 export default NavBarAnimations;
