@@ -286,14 +286,14 @@ body
 
 .Cota-Titles .Cota
 {
-    width: 100%;
-    opacity: 1;
+    width: 15%;
+    opacity: 0;
 }
 
 .Cota-Titles .Cota-Text
 {
-    opacity: 1;
-    transform: translateY(0%);
+    opacity: 0;
+    transform: translateY(100%);
     font-size: var(--font-h3);
 }
 
@@ -427,21 +427,21 @@ body
 
 #Experience
 {
-    justify-content: space-between;
     flex-direction: column;
 }
 
 #Experience-Title
 {
-    height: 10%;
+    position: relative;
+}
+
+#Experience-Title .Cota-Titles
+{
+    width: 100%;
 }
 
 #Experience-Title > h1
 {
-    position: relative;
-
-    padding-top: 80px;
-
     text-align: center;
     font-size: var(--font-h1);
 
@@ -451,28 +451,96 @@ body
 
 #Experience-TemporalLine
 {
+    position: relative;
+
     width: 100%;
-    height: 40%;
+    height: 250px;
+
+    padding-bottom: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+#Experience-TemporalLine::before,
+#Experience-TemporalLine::after
+{
+    background: linear-gradient(to right, var(--color-0) 0%, #1E272E00 100%);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+#Experience-TemporalLine::before
+{
+    left: 0;
+    top: 0;
+}
+
+#Experience-TemporalLine::after
+{
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+.Experience-Track
+{
+    width: fit-content;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.Experience-Item
+{
+    position: relative;
+
+    width: 200px;
+    height: 100px;
 
     background-color: var(--color-4);
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 
-    padding-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Experience-Item > h3
+{
+    position: absolute;
+
+    font-family: "Poppins";
+    color: var(--color-0);
+    font-size: 30px;
+    font-weight: 700;
+
+    text-align: center;
+    right: 25%;
 }
 
 #Experience-Info
 {
-    padding-top: 20px;
+    position: relative;
 
     width:60%;
     height: 50%;
-
-    margin-bottom: 5%;
 }
 
-#Experience-Info > h3
+#Experience-Info .Cota-Titles
 {
-    position: relative;
+    width: 100%;
+}
 
+#Experience-Info-Text
+{
     font-size: var(--font-h4);
     color: var(--color-3);
     font-weight: 300;
@@ -887,6 +955,14 @@ textarea
         padding-bottom: 30%;
     }
 
+    #KnowMe-Profile > img
+    {
+        width: 70%;
+        height: auto;
+        padding: 0;
+    }
+
+
     #KnowMe-Info
     {
         width: 100%;
@@ -911,14 +987,14 @@ textarea
 
 /**RESPONSIVE SECTION EXPERIENCE**/
 
-    #Experience-Info
+    #Experience-Title
     {
-        width: 100%;
+        margin-top: 120px;
     }
 
-    #Experience-Info>h3
+    #Experience-Info
     {
-        margin: 0% 5%;
+        width: 90%;
     }
 
 /**RESPONSIVE SECTION WORKS**/

@@ -1,12 +1,14 @@
 import CotaAnimations from "./cota.js";
 import NavBarAnimations from "./navBar.js";
 import HomeAnimation from "./home.js";
+import TemporalAnimation from "./experience.js";
 
 const mainAnimations = ()=>
 {
     CotaAnimations();
     NavBarAnimations();
     HomeAnimation();
+    TemporalAnimation();
 
     // Obtener todos los enlaces de navegación
     const navLinks = document.querySelectorAll('.NavBar-Button a');

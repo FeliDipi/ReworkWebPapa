@@ -1,9 +1,9 @@
 const CotaAnimations = ()=>
 {
     const btns = document.querySelectorAll(".NavBar-Button");
-    var d = 0.25;
     
     btns.forEach(b=>{
+        let d = 0.25;
     
         const btn = b.querySelector("a");
         const cota = b.querySelector(".Cota");
@@ -71,6 +71,61 @@ const CotaAnimations = ()=>
                 },
             });
         });
+    });
+
+    const titles = document.querySelectorAll(".Cota-Titles");
+    const cotas = [];
+    const cotaTxts = [];
+
+    var listInfo = [
+        "Exelencia",
+        "Compromiso",
+        "Responsabilidad",
+        "Experiencia"
+    ]
+
+    let infoIndex = 0;
+    let d = 0.4;
+
+    titles.forEach(t=>
+        {
+            cotas.push(t.querySelector(".Cota"));
+            cotaTxts.push(t.querySelector(".Cota-Text"));
+        });
+
+    var t = gsap.timeline({ease:"Power3.InOut", repeat:-1});
+    t.to(cotas,{
+        delay:d*2,
+        width:"100%",
+        opacity:1,
+        duration:d
+    });
+    t.to(cotaTxts,{
+        onStart:()=>
+        {
+            cotaTxts.forEach(t=>{
+                t.innerText = listInfo[infoIndex];
+            });
+        },
+        y:"0.5%",
+        opacity:1,
+        duration:d
+    });
+    t.to(cotaTxts,{
+        delay:d*4,
+        y:"100%",
+        opacity:0,
+        duration:d
+    });
+    t.to(cotas,{
+        width:"15%",
+        opacity:0,
+        duration:d,
+        onComplete:()=>
+        {
+            infoIndex++;
+            if(infoIndex>=listInfo.length) infoIndex = 0;
+        }
     });
 }
 
