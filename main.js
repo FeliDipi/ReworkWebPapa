@@ -5,8 +5,10 @@ import Home from "./src/Js/home.js";
 import KnowMe from "./src/Js/knowMe.js";
 import Experience from "./src/Js/experience.js";
 import Works from "./src/Js/works.js";
+import Reveal from "./src/Js/reveal.js";
+import OnSelectionController from "./src/Js/mobileMenu.js";
 
-const mainAnimations = ()=>
+const Main = ()=>
 {
     //General scripts
     CotaAnimations();
@@ -19,5 +21,15 @@ const mainAnimations = ()=>
     Experience();
     Works();
 }
-    
-window.onload = mainAnimations;
+
+Reveal();
+OnSelectionController();
+
+//evento que se invoca cada vez que el usuario scrollea y actualiza los menu mobile e indicadores
+window.onscroll = ()=>
+{
+    Reveal();
+    OnSelectionController();
+};
+
+window.onload = Main;

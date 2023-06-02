@@ -21,65 +21,78 @@ const NavBarAnimations = ()=>
     let d = 0.2;
     let menuOpen = false;
 
+    const CloseMenu = () =>
+    {
+        menuOpen=false;
+        gsap.to($mobileMenu,{
+            duration:d,
+            ease:"Power3.InOut",
+            left:"100%",
+        });
+        gsap.to($lineTop,{
+            duration:d,
+            ease:"Power3.InOut",
+            top:"15px",
+            rotateZ:"0deg",
+            backgroundColor:"#1E272E"
+        });
+        gsap.to($lineMid,{
+            duration:d,
+            ease:"Power3.InOut",
+            opacity:1
+        });
+        gsap.to($lineBottom,{
+            duration:d,
+            ease:"Power3.InOut",
+            top:"45px",
+            rotateZ:"0deg",
+            backgroundColor:"#1E272E"
+        });
+    }
+
+    const OpenMenu = () =>
+    {
+        menuOpen=true;
+        gsap.to($mobileMenu,{
+            duration:d,
+            ease:"Power3.InOut",
+            left:"0%",
+        });
+        gsap.to($lineTop,{
+            duration:d,
+            ease:"Power3.InOut",
+            top:"30px",
+            rotateZ:"45deg",
+            backgroundColor:"#FEC207"
+        });
+        gsap.to($lineMid,{
+            duration:d,
+            ease:"Power3.InOut",
+            opacity:0
+        });
+        gsap.to($lineBottom,{
+            duration:d,
+            ease:"Power3.InOut",
+            top:"30px",
+            rotateZ:"-45deg",
+            backgroundColor:"#FEC207"
+        });
+    }
+
     $mobileMenuBtn.addEventListener("click",()=>
     {
-        if(!menuOpen)
-        {
-            menuOpen=true;
-            gsap.to($mobileMenu,{
-                duration:d,
-                ease:"Power3.InOut",
-                left:"0%",
-            });
-            gsap.to($lineTop,{
-                duration:d,
-                ease:"Power3.InOut",
-                top:"30px",
-                rotateZ:"45deg",
-                backgroundColor:"#FEC207"
-            });
-            gsap.to($lineMid,{
-                duration:d,
-                ease:"Power3.InOut",
-                opacity:0
-            });
-            gsap.to($lineBottom,{
-                duration:d,
-                ease:"Power3.InOut",
-                top:"30px",
-                rotateZ:"-45deg",
-                backgroundColor:"#FEC207"
-            });
-        }
-        else
-        {
-            menuOpen=false;
-            gsap.to($mobileMenu,{
-                duration:d,
-                ease:"Power3.InOut",
-                left:"100%",
-            });
-            gsap.to($lineTop,{
-                duration:d,
-                ease:"Power3.InOut",
-                top:"15px",
-                rotateZ:"0deg",
-                backgroundColor:"#1E272E"
-            });
-            gsap.to($lineMid,{
-                duration:d,
-                ease:"Power3.InOut",
-                opacity:1
-            });
-            gsap.to($lineBottom,{
-                duration:d,
-                ease:"Power3.InOut",
-                top:"45px",
-                rotateZ:"0deg",
-                backgroundColor:"#1E272E"
-            });
-        }
-    })
+        if(!menuOpen) OpenMenu();
+        else CloseMenu();
+    });
+
+    //control de scroll para actualizar la seccion actual donde el usuario esta parado
+    
+    const $mobileButtons = document.querySelectorAll(".Mobile-Button");
+    $mobileButtons.forEach(btn => {
+        btn.addEventListener("click",()=>{
+            CloseMenu();
+        });
+    });
 }
 
 export default NavBarAnimations;

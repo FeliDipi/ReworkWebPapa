@@ -54,6 +54,22 @@ body
     color:var(--color-6);
 }
 
+/* ===REVEAL EFFECT=== */
+
+.Reveal
+{
+    position: relative;
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+.Reveal-Effect
+{
+    transform: translateY(0px);
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+
 /**===COTA STYLES===**/
 
 .Cota-Content
@@ -259,6 +275,7 @@ body
 .Mobile-Menu
 {
     display: none;
+    flex-direction: column;
     left:100%;
     position: fixed;
     z-index: 99;
@@ -267,6 +284,95 @@ body
     height: 100%;
 
     background: linear-gradient(180deg, var(--color-4) 0%, var(--color-5) 100%);
+}
+
+#Mobile-Buttons
+{
+    width: 90%;
+    height: fit-content;
+    align-self: flex-start;
+}
+
+#Mobile-Buttons > li
+{
+    list-style: none;
+    width: 100%;
+}
+
+.Mobile-Button
+{
+    width: 100%;
+    padding: 5px 0px;
+    text-decoration: none;
+}
+
+.Mobile-Engine
+{
+    width: 25%;
+    height: auto;
+}
+
+.Mobile-Engine>path
+{
+    fill: var(--color-0);
+}
+
+.Mobile-Text
+{
+    width: 75%;
+    height: 40px;
+    padding-left: 5px;
+
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+    color:var(--color-0);
+}
+
+.Active > .Mobile-Text
+{
+    color:var(--color-2);
+    font-weight: 800;
+}
+
+.Active > .Mobile-Engine
+{
+    animation: rotation 5s linear infinite;
+}
+
+.Active > .Mobile-Engine > path
+{
+    fill: var(--color-2);
+}
+
+@keyframes rotation
+{
+    0%
+    {
+        transform: rotateZ(0deg);
+    }
+    100%
+    {
+        transform: rotateZ(360deg);
+    }
+}
+
+.Social-Button-Mobile
+{
+    margin-top: 60px;
+    width: 60px;
+    transition: all 0.2s ease-in-out;
+}
+
+.Social-Button-Mobile>img
+{
+    width: 100%;
+    height: auto;
+}
+
+.Social-Button-Mobile:hover
+{
+    transform: scale(0.9);
 }
 
 /**===SECTION HOME STYLES===**/
@@ -1132,7 +1238,7 @@ textarea
 
     .Mobile-Menu
     {
-        display: block;
+        display: flex;
     }
 
 /**RESPONSIVE SECTION HOME**/
